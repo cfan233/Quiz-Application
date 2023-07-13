@@ -3,7 +3,7 @@
 
 ## Application Description
 The application is very similar to that of quizlet with the function of 1 question and 4 answers.
-Users can insert and delete questions and answers at their own desire.
+Users can insert and delete questions and answers the corresponding lists.
 
 
 
