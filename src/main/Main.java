@@ -3,6 +3,7 @@ import ui.App;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         App newgame = new App();
 
         Question q1 = new Question("What is the capital of Canada?", "Ottawa", 1);
@@ -24,11 +25,7 @@ public class Main {
         newgame.removeQuestion(q1);
 
         newgame.startQuiz();
-        System.out.println(newgame.getPoints());
-
-
-
-
+        System.out.println(newgame.getPoints()); */
 
 
 
