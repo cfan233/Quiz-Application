@@ -29,7 +29,7 @@ learning process.
 - As a user I want to add a point system
 - As a user I want to be able to click on the answer and show correct
 - As a user I want a clear interface of where the questions and answers are placed
-- As a user I want to be able insert infinite number of questions
+- As a user I want to be able insert arbitrary amount of questions
 
 
 

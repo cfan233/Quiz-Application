@@ -2,25 +2,120 @@ package ui;
 
 import model.ListOfQuestions;
 import model.Question;
-import model.QuestionBank;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     private int points;
-    private QuestionBank questionBank;
+    private ListOfQuestions questionBank;
+    private Scanner input;
 
     public App() {
         this.points = 0;
-        questionBank = new QuestionBank();
+        questionBank = new ListOfQuestions();
+        runQuiz();
     }
-/*
+
+    public void runQuiz() {
+        boolean keepGoing = true;
+        String inputString;
+
+        while (keepGoing) {
+            showMenu();
+            Scanner scanner = new Scanner(System.in);
+            inputString = null;
+            inputString = scanner.nextLine();
+            if (inputString == "q") {
+                keepGoing = false;
+            } else {
+                processCommand(inputString);
+            }
+        }
+
+    }
+
+    private void processCommand(String command) {
+        if (command.equals("s")) {
+            startQuiz();
+        } else if (command.equals("i")) {
+            insertquestionfromuser();
+        } else if (command.equals("d")) {
+            removequestionfromuser();
+        } else if (command.equals("q")) {
+            System.out.println("Have a good rest of your day");
+        } else if (command.equals("sq")) {
+            showquestionbank();
+        } else if (command.equals("sa")) {
+            showanswers();
+        } else {
+            System.out.println("Value entered is not valid");
+        }
+    }
+
+    public void insertquestionfromuser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please enter your question (String only)");
+        String q = scanner.nextLine();
+        if (!(questionBank.isquestioninbank(q))) {
+            System.out.println("Please enter the corresponding answer for the question you have inserted "
+                    + "(String only)");
+            String a = scanner.nextLine();
+
+            System.out.println("Please assign points from scale 1-10 for answering this question correctly "
+                    + "(integer only)");
+            int p = scanner.nextInt();
+
+            Question newq = new Question(q, a, p);
+
+            questionBank.addQuestion(newq);
+        }
+    }
+
+    public void removequestionfromuser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the question you want to remove");
+        String qremove = scanner.nextLine();
+        questionBank.removeQuestionstring(qremove);
+        System.out.println("The chosen question has been removed");
+
+    }
+
+    public void showquestionbank() {
+        if (questionBank.getListOfQuestions().isEmpty()) {
+            System.out.println("There are no questions inside the question bank");
+        } else {
+            for (Question q : questionBank.getListOfQuestions()) {
+                System.out.print(q.getQuestion());
+            }
+        }
+    }
+
+    public void showanswers() {
+        if (questionBank.getListOfQuestions().isEmpty()) {
+            System.out.println("There are no questions inside the question bank");
+        } else {
+            for (Question q : questionBank.getListOfQuestions()) {
+                System.out.print(q.getCorrectanswer());
+            }
+        }
+    }
+
+    public void showMenu() {
+        System.out.println("\nSelect from:");
+        System.out.println("\ts -> Start Quiz");
+        System.out.println("\ti -> Insert New Question");
+        System.out.println("\td -> Delete Question");
+        System.out.println("\tq -> quit");
+        System.out.println("\tsq -> Show All Questions in Question Bank");
+        System.out.println("\tsa -> Show All Answers in Question Bank");
+    }
+
     public void startQuiz() {
         Scanner scanner = new Scanner(System.in);
 
-        for (Question q: questionBank.getlistOfQuestion()) {
+        for (Question q: questionBank.getListOfQuestions()) {
             System.out.println(q.getQuestion());
             System.out.println("Please insert your answer: ");
             String inputanswer = scanner.nextLine();
@@ -37,5 +132,5 @@ public class App {
         System.out.println("You have finished the quiz, your total score is " + this.points);
     }
 
-*/
+
 }
