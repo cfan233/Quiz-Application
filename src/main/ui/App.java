@@ -5,11 +5,14 @@ import model.Question;
 
 import java.util.Scanner;
 
+// Quiz app
 public class App {
 
     private int points;
     private ListOfQuestions questionBank;
     private Scanner input;
+
+    //EFFECTS: initial quizapp with points being 0, blank questionbank, and runs the quiz application
 
     public App() {
         this.points = 0;
@@ -17,6 +20,8 @@ public class App {
         runQuiz();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     public void runQuiz() {
         boolean keepGoing = true;
         String inputString;
@@ -26,7 +31,7 @@ public class App {
             Scanner scanner = new Scanner(System.in);
             inputString = null;
             inputString = scanner.nextLine();
-            if (inputString == "q") {
+            if (inputString.equals("q")) {
                 keepGoing = false;
             } else {
                 processCommand(inputString);
@@ -34,6 +39,9 @@ public class App {
         }
 
     }
+
+    // MODIFIES: this
+    // EFFECTS: processes user command
 
     private void processCommand(String command) {
         if (command.equals("s")) {
@@ -53,6 +61,8 @@ public class App {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: user can insert questions to questionbank
     public void insertquestionfromuser() {
         Scanner scanner = new Scanner(System.in);
 
@@ -72,6 +82,8 @@ public class App {
             questionBank.addQuestion(newq);
         }
     }
+    // MODIFIES: this
+    // EFFECTS: user can remove questions to questionbank
 
     public void removequestionfromuser() {
         Scanner scanner = new Scanner(System.in);
@@ -82,6 +94,7 @@ public class App {
 
     }
 
+    // EFFECTS: Display the questions in the questionbank
     public void showquestionbank() {
         if (questionBank.getListOfQuestions().isEmpty()) {
             System.out.println("There are no questions inside the question bank");
@@ -91,6 +104,8 @@ public class App {
             }
         }
     }
+
+    // EFFECTS: Display the answers in the questionbank
 
     public void showanswers() {
         if (questionBank.getListOfQuestions().isEmpty()) {
@@ -102,6 +117,8 @@ public class App {
         }
     }
 
+
+    // EFFECTS: Shows the menu to user
     public void showMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\ts -> Start Quiz");
@@ -112,6 +129,8 @@ public class App {
         System.out.println("\tsa -> Show All Answers in Question Bank");
     }
 
+
+    // EFFECTS: starts the quiz for the inputted questions
     public void startQuiz() {
         Scanner scanner = new Scanner(System.in);
 
