@@ -1,7 +1,10 @@
 package model;
 
-    // constructs questions with question, answer, and points
-public class Question {
+import org.json.JSONObject;
+import persistence.Writable;
+
+// constructs questions with question, answer, and points
+public class Question implements Writable {
     private final String question;
     private final String correctanswer;
     private final int assignedpoints;
@@ -26,5 +29,14 @@ public class Question {
 
     public int getAssignedpoints() {
         return this.assignedpoints;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("question", question);
+        json.put("correctanswer", correctanswer);
+        json.put("assignedpoints", assignedpoints);
+        return json;
     }
 }

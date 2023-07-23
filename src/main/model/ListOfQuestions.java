@@ -1,15 +1,25 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 
 
 // EFFECTS: constructs an empty arraylist of question
-public class ListOfQuestions {
+public class ListOfQuestions implements Writable {
     private ArrayList<Question> listOfQuestions;
+    private String name;
 
-    public ListOfQuestions() {
+    public ListOfQuestions(String name) {
         this.listOfQuestions = new ArrayList<Question>();
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Question> getListOfQuestions() {
@@ -55,7 +65,27 @@ public class ListOfQuestions {
         }
         return false;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("questions", listofqsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray listofqsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Question q : listOfQuestions) {
+            jsonArray.put(q.toJson());
+        }
+
+        return jsonArray;
+    }
 }
+
 
 
 

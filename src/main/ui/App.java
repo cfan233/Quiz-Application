@@ -2,34 +2,44 @@ package ui;
 
 import model.ListOfQuestions;
 import model.Question;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Quiz app
+// Citation: Teller APP
 public class App {
 
     private int points;
     private ListOfQuestions questionBank;
-    private Scanner input;
+    private static final String JSON_STORE = "./data/workroom.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
+
 
     //EFFECTS: initial quizapp with points being 0, blank questionbank, and runs the quiz application
 
-    public App() {
+    public App() throws FileNotFoundException {
         this.points = 0;
-        questionBank = new ListOfQuestions();
+        questionBank = new ListOfQuestions("my question bank");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runQuiz();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    public void runQuiz() {
+    public void runQuiz() throws FileNotFoundException {
         boolean keepGoing = true;
         String inputString;
 
         while (keepGoing) {
             showMenu();
             Scanner scanner = new Scanner(System.in);
-            inputString = null;
             inputString = scanner.nextLine();
             if (inputString.equals("q")) {
                 keepGoing = false;
@@ -43,7 +53,7 @@ public class App {
     // MODIFIES: this
     // EFFECTS: processes user command
 
-    private void processCommand(String command) {
+    private void processCommand(String command)  {
         if (command.equals("s")) {
             startQuiz();
         } else if (command.equals("i")) {
@@ -56,6 +66,10 @@ public class App {
             showquestionbank();
         } else if (command.equals("sa")) {
             showanswers();
+        } else if (command.equals("save")) {
+            saveQuestionBank();
+        } else if (command.equals("load")) {
+            loadQuestionBank();
         } else {
             System.out.println("Value entered is not valid");
         }
@@ -66,20 +80,25 @@ public class App {
     public void insertquestionfromuser() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter your question (String only)");
+        System.out.println("Please enter your question");
         String q = scanner.nextLine();
         if (!(questionBank.isquestioninbank(q))) {
-            System.out.println("Please enter the corresponding answer for the question you have inserted "
-                    + "(String only)");
+            System.out.println("Please enter the corresponding answer for the question you have inserted");
             String a = scanner.nextLine();
 
             System.out.println("Please assign points from scale 1-10 for answering this question correctly "
                     + "(integer only)");
             int p = scanner.nextInt();
+            Object castp = p;
 
-            Question newq = new Question(q, a, p);
+            if (p >= 1 && p <= 10) {
+                Question newq = new Question(q, a, p);
+                questionBank.addQuestion(newq);
+            } else {
+                System.out.println("please enter an integer between 1-10");
+            }
 
-            questionBank.addQuestion(newq);
+
         }
     }
     // MODIFIES: this
@@ -100,7 +119,9 @@ public class App {
             System.out.println("There are no questions inside the question bank");
         } else {
             for (Question q : questionBank.getListOfQuestions()) {
-                System.out.print(q.getQuestion());
+                int pnum = questionBank.getListOfQuestions().indexOf(q) + 1;
+                String extra = ". ";
+                System.out.println(pnum + extra + q.getQuestion());
             }
         }
     }
@@ -112,7 +133,9 @@ public class App {
             System.out.println("There are no questions inside the question bank");
         } else {
             for (Question q : questionBank.getListOfQuestions()) {
-                System.out.print(q.getCorrectanswer());
+                int pnum = questionBank.getListOfQuestions().indexOf(q) + 1;
+                String extra = ". ";
+                System.out.print(pnum + extra + q.getCorrectanswer());
             }
         }
     }
@@ -124,9 +147,11 @@ public class App {
         System.out.println("\ts -> Start Quiz");
         System.out.println("\ti -> Insert New Question");
         System.out.println("\td -> Delete Question");
-        System.out.println("\tq -> quit");
+        System.out.println("\tq -> Quit");
         System.out.println("\tsq -> Show All Questions in Question Bank");
         System.out.println("\tsa -> Show All Answers in Question Bank");
+        System.out.println("\tsave -> save question bank to file");
+        System.out.println("\tload -> load question bank from file");
     }
 
 
@@ -149,6 +174,29 @@ public class App {
             }
         }
         System.out.println("You have finished the quiz, your total score is " + this.points);
+    }
+
+    // EFFECTS: saves the questionbank to file
+    private void saveQuestionBank() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(questionBank);
+            jsonWriter.close();
+            System.out.println("Saved " + questionBank.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadQuestionBank() {
+        try {
+            questionBank = jsonReader.read();
+            System.out.println("Loaded " + questionBank.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 

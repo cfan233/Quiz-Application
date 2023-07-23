@@ -13,7 +13,7 @@ public class testforListofQuestions {
 
     @BeforeEach
     void runbefore() {
-        loq = new ListOfQuestions();
+        loq = new ListOfQuestions("hi");
     }
     @Test
     void testaddQuestion(){
