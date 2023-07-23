@@ -1,13 +1,12 @@
 package ui;
 
-import exceptions.Nonintegerexception;
-import model.Question;
-import ui.App;
-
 import java.io.FileNotFoundException;
 
+// Citation: WorkRoomAPP
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 public class Main {
-    public static void main(String[] args) throws Nonintegerexception {
+    public static void main(String[] args) {
         try {
             new App();
         } catch (FileNotFoundException e) {

@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.stream.Stream;
 
+
+// Citation: WorkRoomAPP
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReader {
     private String source;
 
@@ -22,13 +24,14 @@ public class JsonReader {
         this.source = source;
     }
 
+    // EFFECTS: reads ListOfQuestions from file and returns it;
+    // throws IOException if an error occurs reading data from file
     public ListOfQuestions read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseListOfQuestions(jsonObject);
     }
 
-    // EFFECTS: reads source file as string and returns it
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -40,6 +43,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    // EFFECTS: parses listofquestions from JSON object and returns it
     private ListOfQuestions parseListOfQuestions(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         ListOfQuestions loq = new ListOfQuestions(name);
@@ -49,8 +53,8 @@ public class JsonReader {
 
 
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: loq
+    // EFFECTS: parses questions from JSON object and adds them to listofquestions
     private void addQuestions(ListOfQuestions loq, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("questions");
         for (Object json : jsonArray) {
@@ -60,6 +64,9 @@ public class JsonReader {
 
     }
 
+
+    // MODIFIES: loq
+    // EFFECTS: parses question from JSON object and adds it to listofquestions
     private void addQuestion(ListOfQuestions loq, JSONObject jsonObject) {
         String question = jsonObject.getString("question");
         String correctanswer = jsonObject.getString("correctanswer");

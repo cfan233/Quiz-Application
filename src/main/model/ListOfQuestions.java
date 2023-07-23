@@ -6,7 +6,9 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
-
+// Citation: Teller APP, WorkRoomAPP
+//https://github.students.cs.ubc.ca/CPSC210/TellerApp
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 // EFFECTS: constructs an empty arraylist of question
 public class ListOfQuestions implements Writable {
@@ -74,7 +76,7 @@ public class ListOfQuestions implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns questions in listofquestions as a JSON array
     private JSONArray listofqsToJson() {
         JSONArray jsonArray = new JSONArray();
 

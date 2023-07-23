@@ -11,6 +11,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Citation: WorkRoomAPP
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 class JsonReaderTest extends JsonTest {
 
     @Test

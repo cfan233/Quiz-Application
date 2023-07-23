@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // Quiz app
-// Citation: Teller APP
+// Citation: Teller APP, WorkRoomAPP
+//https://github.students.cs.ubc.ca/CPSC210/TellerApp
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class App {
 
     private int points;
@@ -189,7 +191,7 @@ public class App {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads questionbank from file
     private void loadQuestionBank() {
         try {
             questionBank = jsonReader.read();

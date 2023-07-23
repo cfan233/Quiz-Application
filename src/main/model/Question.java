@@ -3,6 +3,11 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+// Citation: Teller APP, WorkRoomAPP
+//https://github.students.cs.ubc.ca/CPSC210/TellerApp
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+
 // constructs questions with question, answer, and points
 public class Question implements Writable {
     private final String question;

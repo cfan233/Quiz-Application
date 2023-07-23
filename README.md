@@ -22,23 +22,15 @@ learning process.
 
 
 
-## UserStory phase 0:
+## UserStory phase 2:
 - As a user I want to insert new questions
 - As a user I want to insert answers
-- As a user I want to show question and corresponding answer in a interface for the purpose of revision process
+- As a user I want to show all questions in the order it is entered
+- As a user I want to show all answers to the questions in the order it is entered
 - As a user I want to add a point system
 - As a user I want to be able to click on the answer and show correct
-- As a user I want a clear interface of where the questions and answers are placed
-- As a user I want to be able insert arbitrary amount of questions
+- As a user I want to be able to insert arbitrary amount of questions
+- As a user I want to save questions and its corresponding answers and associated points entered previously
+- As a user I want to load questions and its corresponding answers and associated points entered previously
 
-
-
-
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
-
-
-An example of text with **bold** and *italic* fonts.
 
