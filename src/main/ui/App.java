@@ -1,5 +1,7 @@
 package ui;
 
+
+
 import model.ListOfQuestions;
 import model.Question;
 import persistence.JsonReader;
@@ -7,6 +9,7 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Quiz app
@@ -55,7 +58,7 @@ public class App {
     // MODIFIES: this
     // EFFECTS: processes user command
 
-    private void processCommand(String command)  {
+    private void processCommand(String command) throws ArithmeticException {
         if (command.equals("s")) {
             startQuiz();
         } else if (command.equals("i")) {
@@ -90,16 +93,19 @@ public class App {
 
             System.out.println("Please assign points from scale 1-10 for answering this question correctly "
                     + "(integer only)");
-            int p = scanner.nextInt();
-            Object castp = p;
+            int p = 0;
 
-            if (p >= 1 && p <= 10) {
-                Question newq = new Question(q, a, p);
-                questionBank.addQuestion(newq);
-            } else {
-                System.out.println("please enter an integer between 1-10");
+            try {
+                p = scanner.nextInt();
+                if (!(p < 1 || p > 10)) {
+                    Question newq = new Question(q, a, p);
+                    questionBank.addQuestion(newq);
+                } else {
+                    System.out.println("Integer input is not within the bound 1-10");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter integer");
             }
-
 
         }
     }

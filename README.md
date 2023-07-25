@@ -28,7 +28,7 @@ learning process.
 - As a user I want to show all questions in the order it is entered
 - As a user I want to show all answers to the questions in the order it is entered
 - As a user I want to add a point system
-- As a user I want to be able to click on the answer and show correct
+- As a user I want to be able to let the system determine if I got the correct answer
 - As a user I want to be able to insert arbitrary amount of questions
 - As a user I want to save questions and its corresponding answers and associated points entered previously
 - As a user I want to load questions and its corresponding answers and associated points entered previously
