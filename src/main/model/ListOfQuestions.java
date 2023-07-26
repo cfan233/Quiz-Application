@@ -8,13 +8,14 @@ import java.util.ArrayList;
 
 // Citation: Teller APP, WorkRoomAPP
 //https://github.students.cs.ubc.ca/CPSC210/TellerApp
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+//https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
-// EFFECTS: constructs an empty arraylist of question
+
 public class ListOfQuestions implements Writable {
     private ArrayList<Question> listOfQuestions;
     private String name;
 
+    // EFFECTS: constructs an empty arraylist of question
     public ListOfQuestions(String name) {
         this.listOfQuestions = new ArrayList<Question>();
         this.name = name;

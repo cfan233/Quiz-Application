@@ -1,0 +1,15 @@
+{
+    "name": "my question bank",
+    "questions": [
+        {
+            "question": "asdkjl",
+            "correctanswer": "aslkdj",
+            "assignedpoints": 9
+        },
+        {
+            "question": "asdjklakl",
+            "correctanswer": "askldja",
+            "assignedpoints": 8
+        }
+    ]
+}

@@ -143,7 +143,7 @@ public class App {
             for (Question q : questionBank.getListOfQuestions()) {
                 int pnum = questionBank.getListOfQuestions().indexOf(q) + 1;
                 String extra = ". ";
-                System.out.print(pnum + extra + q.getCorrectanswer());
+                System.out.println(pnum + extra + q.getCorrectanswer());
             }
         }
     }

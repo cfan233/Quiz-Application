@@ -8,12 +8,12 @@ import persistence.Writable;
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 
-// constructs questions with question, answer, and points
+
 public class Question implements Writable {
     private final String question;
     private final String correctanswer;
     private final int assignedpoints;
-    //REQIURES: question and answer both in string, and an assignedpoints 0-10
+
     //EFFECTS: constructs a question with user input of question correct answer and assignedpoints
 
     public Question(String question, String correctanswer, int assignedpoints) {

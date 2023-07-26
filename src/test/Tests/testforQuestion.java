@@ -1,11 +1,8 @@
 package Tests;
+
 import model.Question;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.App;
-import org.junit.jupiter.api.Assertions.*;
-import java.util.List;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
