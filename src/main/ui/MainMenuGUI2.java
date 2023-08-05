@@ -16,7 +16,7 @@ import java.util.List;
 public class MainMenuGUI2 extends JFrame {
     private static final String STATUS = "Please Make Your Selection";
     private JLabel statusLabel;
-    private JPanel buttonPanel = new JPanel(new GridLayout(8, 2, 10, 10));
+    private JPanel buttonPanel = new JPanel(new GridLayout(9, 2, 10, 10));
     protected App app = new App();
 
     //all fields for insert question:
@@ -59,6 +59,7 @@ public class MainMenuGUI2 extends JFrame {
         deleteQuestion();
         showQuestion();
         showAnswer();
+        showPoints();
         save();
         load();
         quit();
@@ -112,10 +113,32 @@ public class MainMenuGUI2 extends JFrame {
 
         showQuestionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                app.showquestionbank();
+                qbankqshower();
             }
         });
         buttonPanel.add(showQuestionButton);
+
+    }
+
+    public void qbankqshower() {
+        JFrame showqframe = new JFrame("All Question in Bank");
+        showqframe.setTitle("All Question in Bank");
+        showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        showqframe.setSize(300, 200);
+
+        int numquestion = 1;
+
+        List<String> qsinstring = new ArrayList<>();
+
+        for (Question q : app.questionBank.getListOfQuestions()) {
+
+            String qinstring = q.getQuestion();
+            qsinstring.add("Question" + String.valueOf(numquestion) + " : " + qinstring);
+            numquestion++;
+        }
+        JLabel qlabel = new JLabel(qsinstring.toString());
+        showqframe.add(qlabel);
+        showqframe.setVisible(true);
 
     }
 
@@ -125,10 +148,66 @@ public class MainMenuGUI2 extends JFrame {
         showAnswerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                app.showanswers();
+                qbankashower();
             }
         });
         buttonPanel.add(showAnswerButton);
+    }
+
+    public void qbankashower() {
+        JFrame showqframe = new JFrame("All Question in Bank");
+        showqframe.setTitle("All Question in Bank");
+        showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        showqframe.setSize(300, 200);
+
+        int numquestion = 1;
+
+        List<String> qsinstring = new ArrayList<>();
+
+        for (Question q : app.questionBank.getListOfQuestions()) {
+
+            String qinstring = q.getCorrectanswer();
+            qsinstring.add("Answer" + String.valueOf(numquestion) + " : " + qinstring);
+            numquestion++;
+        }
+        JLabel qlabel = new JLabel(qsinstring.toString());
+        showqframe.add(qlabel);
+        showqframe.setVisible(true);
+
+    }
+
+    public void showPoints() {
+        JButton showPointsButton = new JButton("Show All Assigned Points in Question Bank");
+
+        showPointsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                qbanksshower();
+            }
+        });
+        buttonPanel.add(showPointsButton);
+
+    }
+
+    public void qbanksshower() {
+        JFrame showqframe = new JFrame("All Question in Bank");
+        showqframe.setTitle("All Question in Bank");
+        showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        showqframe.setSize(300, 200);
+
+        int numquestion = 1;
+
+        List<String> qsinstring = new ArrayList<>();
+
+        for (Question q : app.questionBank.getListOfQuestions()) {
+
+            int qinstring = q.getAssignedpoints();
+            qsinstring.add("Question" + String.valueOf(numquestion) + " : " + qinstring + " points");
+            numquestion++;
+        }
+        JLabel qlabel = new JLabel(qsinstring.toString());
+        showqframe.add(qlabel);
+        showqframe.setVisible(true);
+
     }
 
     public void save() {
@@ -244,9 +323,10 @@ public class MainMenuGUI2 extends JFrame {
 
 
     public void startQuizInterface() {
-        startqframe = new JFrame()
+        startqframe = new JFrame();
         startqframe.setTitle("Start Quiz");
-        startqframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        startqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         startqframe.setSize(400, 200);
 
         panel.add(statusLabelsq, BorderLayout.NORTH);
@@ -260,7 +340,7 @@ public class MainMenuGUI2 extends JFrame {
         showq(qnum);
         startqframe.add(panel);
         pack();
-        setVisible(true);
+        startqframe.setVisible(true);
     }
 
     public void initializetextbox() {
@@ -271,7 +351,6 @@ public class MainMenuGUI2 extends JFrame {
     }
 
     public void showq(int indexnum) {
-
         String question = app.getQuestionBank().getListOfQuestions().get(indexnum).getQuestion();
         questionlabel.setText("Question: " + question);
         useranswer.get(0).setText("");
