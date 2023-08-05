@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainMenuGUI2 extends JFrame {
+public class MainMenuGUI extends JFrame {
     private static final String STATUS = "Please Make Your Selection";
     private JLabel statusLabel;
     private JPanel buttonPanel = new JPanel(new GridLayout(9, 2, 10, 10));
@@ -44,9 +44,12 @@ public class MainMenuGUI2 extends JFrame {
     private int qnum = 0;
     private JFrame startqframe;
 
+    //delete question fields
+    private JFrame deleteqframe;
+    private JTextField deleteqinput;
 
 
-    public MainMenuGUI2() throws FileNotFoundException {
+    public MainMenuGUI() throws FileNotFoundException {
         super("My QUIZ");
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -102,11 +105,45 @@ public class MainMenuGUI2 extends JFrame {
 
         deleteQuestionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                deleteQfram();
             }
         });
         buttonPanel.add(deleteQuestionButton);
     }
+
+    public void deleteQfram() {
+        deleteqframe = new JFrame("Delete Question");
+        deleteqframe.setDefaultCloseOperation(HIDE_ON_CLOSE);
+
+        submitBfordelete();
+
+        JLabel qlabel = new JLabel("Please enter the question you want to remove");
+        deleteqframe.add(qlabel,BorderLayout.NORTH);
+
+        deleteqframe.pack();
+        deleteqframe.setVisible(true);
+
+    }
+
+    public void deletefunciton() {
+        String deleteqinpuutstring = deleteqinput.getText();
+        app.questionBank.removeQuestionstring(deleteqinpuutstring);
+    }
+
+    public void submitBfordelete() {
+        deleteqinput = new JTextField(50);
+        deleteqframe.add(deleteqinput,BorderLayout.WEST);
+        JButton deletesubmitB = new JButton("Submit");
+        deletesubmitB.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                deletefunciton();
+            }
+        });
+        deleteqframe.add(new JLabel());
+        deleteqframe.add(deletesubmitB, BorderLayout.SOUTH);
+    }
+
+
 
     public void showQuestion() {
         JButton showQuestionButton = new JButton("Show All Questions in Question Bank");
@@ -390,7 +427,7 @@ public class MainMenuGUI2 extends JFrame {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        new MainMenuGUI2();
+        new MainMenuGUI();
     }
 
     public App getApp() {
