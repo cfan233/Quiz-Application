@@ -10,6 +10,7 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 // Quiz app
@@ -19,7 +20,7 @@ import java.util.Scanner;
 public class App {
 
     private int points;
-    private ListOfQuestions questionBank;
+    protected ListOfQuestions questionBank;
     private static final String JSON_STORE = "./data/workroom.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -33,7 +34,7 @@ public class App {
         questionBank = new ListOfQuestions("my question bank");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        runQuiz();
+
     }
 
     // MODIFIES: this
@@ -80,6 +81,10 @@ public class App {
         }
     }
 
+    public ListOfQuestions getQuestionBank() {
+        return questionBank;
+    }
+
     // MODIFIES: this
     // EFFECTS: user can insert questions to questionbank
     public void insertquestionfromuser() {
@@ -103,7 +108,7 @@ public class App {
                 } else {
                     System.out.println("Integer input is not within the bound 1-10");
                 }
-            } catch (InputMismatchException e) {
+            } catch (RuntimeException e) {
                 System.out.println("Please enter integer");
             }
 
@@ -185,7 +190,7 @@ public class App {
     }
 
     // EFFECTS: saves the questionbank to file
-    private void saveQuestionBank() {
+    public void saveQuestionBank() {
         try {
             jsonWriter.open();
             jsonWriter.write(questionBank);
@@ -198,7 +203,7 @@ public class App {
 
     // MODIFIES: this
     // EFFECTS: loads questionbank from file
-    private void loadQuestionBank() {
+    public void loadQuestionBank() {
         try {
             questionBank = jsonReader.read();
             System.out.println("Loaded " + questionBank.getName() + " from " + JSON_STORE);

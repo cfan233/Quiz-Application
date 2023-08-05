@@ -60,8 +60,6 @@ public class ListOfQuestions implements Writable {
     public boolean isquestioninbank(String ques) {
         for (Question q : getListOfQuestions()) {
             if (q.getQuestion().equals(ques)) {
-                System.out.print("Sorry the question you are trying to implement is already "
-                        + "in the question bank and the question bank does not allow duplicates");
                 return true;
             }
 
