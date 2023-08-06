@@ -48,7 +48,7 @@ public class MainMenuGUI extends JFrame {
     private JFrame deleteqframe;
     private JTextField deleteqinput;
 
-
+    // EFFECTS: Start the ui for the entire application
     public MainMenuGUI() throws FileNotFoundException {
         super("My QUIZ");
 
@@ -74,6 +74,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that runs the quiz
     public void startQuiz() {
         JButton startQuizButton = new JButton("StartQuiz");
         startQuizButton.addActionListener(new ActionListener() {
@@ -84,6 +86,8 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(startQuizButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that inserts new question
     public void insertNewQuestion() {
         JButton insertNewQuestionButton = new JButton("Insert New Question");
         insertNewQuestionButton.addActionListener(new ActionListener() {
@@ -100,6 +104,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that deletes question
     public void deleteQuestion() {
         JButton deleteQuestionButton = new JButton("Delete Question");
 
@@ -111,6 +117,8 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(deleteQuestionButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Makes a frame for the delete question popup window
     public void deleteQfram() {
         deleteqframe = new JFrame("Delete Question");
         deleteqframe.setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -125,11 +133,15 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this, app
+    //EFFECTS: removes the question from the app question bank with the string from the text field
     public void deletefunciton() {
         String deleteqinpuutstring = deleteqinput.getText();
         app.questionBank.removeQuestionstring(deleteqinpuutstring);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the delete button pop up window, and when clicked execute the delete question task
     public void submitBfordelete() {
         deleteqinput = new JTextField(50);
         deleteqframe.add(deleteqinput,BorderLayout.WEST);
@@ -144,7 +156,8 @@ public class MainMenuGUI extends JFrame {
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that shows all question
     public void showQuestion() {
         JButton showQuestionButton = new JButton("Show All Questions in Question Bank");
 
@@ -157,6 +170,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new frame in pop up window and shows all question in app question bank
     public void qbankqshower() {
         JFrame showqframe = new JFrame("All Question in Bank");
         showqframe.setTitle("All Question in Bank");
@@ -179,6 +194,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that shows all answers
     public void showAnswer() {
         JButton showAnswerButton = new JButton("Show All Answers in Question Bank");
 
@@ -191,6 +208,8 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(showAnswerButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new frame in pop up window and shows all answers in app question bank
     public void qbankashower() {
         JFrame showqframe = new JFrame("All Question in Bank");
         showqframe.setTitle("All Question in Bank");
@@ -213,6 +232,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and makes a popup window that shows all assigned points;
     public void showPoints() {
         JButton showPointsButton = new JButton("Show All Assigned Points in Question Bank");
 
@@ -225,8 +246,10 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new frame in pop up window and shows all assigned points in app question bank
     public void qbanksshower() {
-        JFrame showqframe = new JFrame("All Question in Bank");
+        JFrame showqframe = new JFrame("All Assigned Points in Bank");
         showqframe.setTitle("All Question in Bank");
         showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         showqframe.setSize(300, 200);
@@ -247,6 +270,8 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and saves all states
     public void save() {
         JButton saveButton = new JButton("Save Question Bank to File");
 
@@ -258,6 +283,8 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(saveButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and loads the previously saved questions and states
     public void load() {
         JButton loadButton = new JButton("Load Question Bank from File");
 
@@ -269,6 +296,8 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(loadButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui, and quits the application
     public void quit() {
         JButton quitButton = new JButton("Quit");
 
@@ -280,6 +309,9 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(quitButton);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui in the form of pop up window, and allows the function of
+    //         insert question to be shown
     public void insertQuestionInterface() {
         insertqframe = new JFrame("Insert Question");
         insertqframe.setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -298,6 +330,8 @@ public class MainMenuGUI extends JFrame {
         insertqframe.setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a textfield and label for insert question to the insertquestion interface
     public void inputQ() {
         JLabel labelforinputq = new JLabel("Please enter your question:");
         questioninput = new JTextField(50);
@@ -305,6 +339,8 @@ public class MainMenuGUI extends JFrame {
         buttonPaneliq.add(questioninput);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a textfield and label for insert answer to the insertquestion interface
     public void inputA() {
         JLabel labelforinputa = new JLabel("Please enter the corresponding answer for the question "
                 + "you have inserted");
@@ -313,6 +349,8 @@ public class MainMenuGUI extends JFrame {
         buttonPaneliq.add(answerinput);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a textfield and label for insert points to the insertquestion interface
     public void inputS() {
         JLabel labelforinputS = new JLabel("Please assign points from scale 1-10 for answering this "
                 + "question correctly " + "(integer only)");
@@ -322,6 +360,9 @@ public class MainMenuGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a button to the insertquestion interface and checks if the text fields input meets condition to be
+    //         added
     public void submitButton() {
         submitB = new JButton("Submit");
         submitB.addActionListener(new ActionListener() {
@@ -333,6 +374,8 @@ public class MainMenuGUI extends JFrame {
         buttonPaneliq.add(submitB);
     }
 
+
+    //EFFECTS: Checks if the text fields for the question parameters fits reqiurement to be added
     public void insertQreqiurement() {
         String questionstring = questioninput.getText();
         String anwserstring = answerinput.getText();
@@ -358,7 +401,9 @@ public class MainMenuGUI extends JFrame {
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: insert a new button to the ui in the form of pop up window, and allows the function of
+    //         startQuiz to be shown
     public void startQuizInterface() {
         startqframe = new JFrame();
         startqframe.setTitle("Start Quiz");
@@ -380,6 +425,8 @@ public class MainMenuGUI extends JFrame {
         startqframe.setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert textfields for answers for the questions into startquiz interface
     public void initializetextbox() {
         for (Question q : app.questionBank.getListOfQuestions()) {
             JTextField textField = new JTextField(10);
@@ -387,12 +434,16 @@ public class MainMenuGUI extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert lables to start quiz interface and puts the question in the question bank in the label
     public void showq(int indexnum) {
         String question = app.getQuestionBank().getListOfQuestions().get(indexnum).getQuestion();
         questionlabel.setText("Question: " + question);
         useranswer.get(0).setText("");
     }
 
+    //MODIFIES: this
+    //EFFECTS: insert a button to the start quiz interface and checks if the text fields input for answer is correct
     public void submitButtonsq() {
         panel.add(useranswer.get(0));
         submitBsq = new JButton("Submit");
@@ -404,6 +455,8 @@ public class MainMenuGUI extends JFrame {
         });
     }
 
+
+    //EFFECTS: checks if the text field input is correct for the corresponding question.
     public void answerchecker() {
 
         String inputanswer = useranswer.get(0).getText();
@@ -430,7 +483,4 @@ public class MainMenuGUI extends JFrame {
         new MainMenuGUI();
     }
 
-    public App getApp() {
-        return this.app;
-    }
 }
