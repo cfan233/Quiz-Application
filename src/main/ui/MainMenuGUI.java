@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Citation: TrafficLight Lecture Lab
+// https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabSolution
+
 public class MainMenuGUI extends JFrame {
     private static final String STATUS = "Please Make Your Selection";
     private JLabel statusLabel;

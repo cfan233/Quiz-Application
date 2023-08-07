@@ -16,7 +16,7 @@ import java.util.Scanner;
 // Quiz app
 // Citation: Teller APP, WorkRoomAPP
 //https://github.students.cs.ubc.ca/CPSC210/TellerApp
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+//https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class App {
 
     private int points;
