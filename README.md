@@ -27,6 +27,7 @@ learning process.
 - As a user I want to insert answers
 - As a user I want to show all questions in the order it is entered
 - As a user I want to show all answers to the questions in the order it is entered
+- - As a user I want to show all assigned points to the questions in the order it is entered
 - As a user I want to add a point system
 - As a user I want to be able to let the system determine if I got the correct answer
 - As a user I want to be able to insert arbitrary amount of questions
@@ -35,7 +36,7 @@ learning process.
 - You can generate the first required action related to adding Xs to a Y by insert question button in MainMenuGui
 - You can generate the second required action related to adding Xs to a Y by insert question button in MainMenuGui
 - You can locate my visual component by inserting a question that fits the insert question requirement, when answering 
-- a question correctly or falsely
+a question correctly or falsely
 - You can save the state of my application by clicking on the save button in MainGui
 - You can reload the state of my application by clicking on the reload button in MainGui
 

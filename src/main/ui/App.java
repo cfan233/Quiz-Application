@@ -195,7 +195,6 @@ public class App {
             jsonWriter.open();
             jsonWriter.write(questionBank);
             jsonWriter.close();
-            System.out.println("Saved " + questionBank.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -206,7 +205,6 @@ public class App {
     public void loadQuestionBank() {
         try {
             questionBank = jsonReader.read();
-            System.out.println("Loaded " + questionBank.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
