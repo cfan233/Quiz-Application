@@ -214,8 +214,8 @@ public class MainMenuGUI extends JFrame {
     //MODIFIES: this
     //EFFECTS: insert a new frame in pop up window and shows all answers in app question bank
     public void qbankashower() {
-        JFrame showqframe = new JFrame("All Question in Bank");
-        showqframe.setTitle("All Question in Bank");
+        JFrame showqframe = new JFrame("All Answers in Bank");
+        showqframe.setTitle("All Answers in Bank");
         showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         showqframe.setSize(300, 200);
 
@@ -253,7 +253,7 @@ public class MainMenuGUI extends JFrame {
     //EFFECTS: insert a new frame in pop up window and shows all assigned points in app question bank
     public void qbanksshower() {
         JFrame showqframe = new JFrame("All Assigned Points in Bank");
-        showqframe.setTitle("All Question in Bank");
+        showqframe.setTitle("All Assigned Points in Bank");
         showqframe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         showqframe.setSize(300, 200);
 

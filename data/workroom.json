@@ -1,15 +1,8 @@
 {
     "name": "my question bank",
-    "questions": [
-        {
-            "question": "1+1",
-            "correctanswer": "2",
-            "assignedpoints": 2
-        },
-        {
-            "question": "2+2",
-            "correctanswer": "4",
-            "assignedpoints": 3
-        }
-    ]
+    "questions": [{
+        "question": "1",
+        "correctanswer": "1",
+        "assignedpoints": 1
+    }]
 }
