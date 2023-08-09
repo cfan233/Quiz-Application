@@ -109,4 +109,36 @@ public class testforListofQuestions {
         assertTrue(loq.isquestioninbank("What is the capital of Canada?"));
         assertFalse(loq.isquestioninbank("Who is the prime minister of Canada?"));
     }
+
+    @Test
+    void testremoveQuestioncons1(){
+        Question q1 = new Question("What is the capital of Canada?", "Ottawa", 1);
+        Question q2 = new Question("Which city is UBC at?", "Vancouver", 2);
+        Question q3 = new Question("Who is the prime minister of Canada?", "Justin Trudeau", 3);
+        Question q4 = new Question("Who owns Tesla?","Elon Musk", 1);
+
+
+
+        loq.addQuestion(q1);
+        loq.addQuestion(q2);
+        loq.addQuestion(q3);
+        loq.addQuestion(q4);
+        assertEquals(4, loq.getListOfQuestions1().size());
+
+        loq.removeQuestioncons(q1);
+        assertEquals(3, loq.getListOfQuestions1().size());
+        assertEquals(q2, loq.getListOfQuestions1().get(0));
+
+        loq.removeQuestioncons(q2);
+        loq.removeQuestioncons(q3);
+
+        assertEquals(1, loq.getListOfQuestions1().size());
+        assertEquals(q4, loq.getListOfQuestions1().get(0));
+
+        loq.removeQuestioncons(q4);
+        assertEquals(0, loq.getListOfQuestions1().size());
+        assertTrue(loq.getListOfQuestions1().isEmpty());
+
+    }
+
 }

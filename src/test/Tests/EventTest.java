@@ -7,13 +7,15 @@ import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the Event class
  */
 public class EventTest {
     private Event e;
+    private Event a;
+    private Event c;
     private Date d;
 
     //NOTE: these tests might fail if time at which line (2) below is executed
@@ -22,18 +24,49 @@ public class EventTest {
 
     @BeforeEach
     public void runBefore() {
-        e = new Event("Sensor open at door");   // (1)
+        e = new Event("x");  // (1)
         d = Calendar.getInstance().getTime();   // (2)
+        c = new Event("Sensor open at doo");
+        a = new Event("x");
     }
 
     @Test
     public void testEvent() {
-        assertEquals("Sensor open at door", e.getDescription());
+        assertEquals("x", e.getDescription());
         assertEquals(d, e.getDate());
     }
 
     @Test
+    public void testequalsnull() {
+        assertFalse(e.equals(null));
+    }
+    @Test
+    public void testequalsnotsamesubject() {
+        assertFalse(e.equals(d));
+    }
+
+    @Test
+    public void testequalsnotsame() {
+        assertFalse(e.equals(c));
+    }
+
+    @Test
+    public void testHashCode() {
+        assertNotEquals(e.hashCode(), c.hashCode());
+        assertEquals(a.hashCode(), e.hashCode());
+    }
+
+    @Test
+    public void testequalscorrect() {
+        assertTrue(a.equals(e));
+    }
+
+
+
+
+
+    @Test
     public void testToString() {
-        assertEquals(d.toString() + "\n" + "Sensor open at door", e.toString());
+        assertEquals(d.toString() + "\n" + "x", e.toString());
     }
 }
