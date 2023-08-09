@@ -52,18 +52,20 @@ public class EventTest {
         assertFalse(e.equals(c));
     }
 
+
+
+    @Test
+    public void testequalscorrect() {
+        assertEquals(a,e);
+        assertFalse(a.equals(e));
+        assertFalse(a.equals(c));
+    }
+
     @Test
     public void testHashCode() {
         assertNotEquals(e.hashCode(), c.hashCode());
         assertEquals(a.hashCode(), e.hashCode());
     }
-
-    @Test
-    public void testequalscorrect() {
-        assertTrue(a.equals(e));
-        assertFalse(a.equals(c));
-    }
-
 
 
 
