@@ -58,7 +58,8 @@ public class EventTest {
 
     @Test
     public void testequalscorrect() {
-        assertTrue(a.equals(e));
+        assertFalse(a.equals(e));
+        assertFalse(a.equals(c));
     }
 
 
