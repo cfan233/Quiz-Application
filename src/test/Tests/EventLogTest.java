@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Citation: AlarmSystem
 //https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
-
+//
 /**
  * Unit tests for the EventLog class
  */
