@@ -20,6 +20,7 @@ public class EventTest {
     private Event a;
     private Event c;
     private Date d;
+    private String z;
 
     //NOTE: these tests might fail if time at which line (2) below is executed
     //is different from time that line (1) is executed.  Lines (1) and (2) must
@@ -29,8 +30,10 @@ public class EventTest {
     public void runBefore() {
         e = new Event("x");  // (1)
         a = new Event("x");
-        d = Calendar.getInstance().getTime();   // (2)
+
         c = new Event("Sensor open at doo");
+        z = "plz";
+        d = Calendar.getInstance().getTime();
 
     }
 
@@ -59,9 +62,10 @@ public class EventTest {
 
     @Test
     public void testequalscorrect() {
+        assertFalse(e.equals(z));
         assertEquals(a,e);
-        assertFalse(a.equals(e));
-        assertFalse(a.equals(c));
+        assertTrue(a.equals(e));
+        assertFalse(e.equals(z));
 
         Event l = new Event("x");
         assertFalse(l.equals(e));
