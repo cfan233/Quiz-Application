@@ -27,7 +27,7 @@ learning process.
 - As a user I want to insert answers
 - As a user I want to show all questions in the order it is entered
 - As a user I want to show all answers to the questions in the order it is entered
-- - As a user I want to show all assigned points to the questions in the order it is entered
+- As a user I want to show all assigned points to the questions in the order it is entered
 - As a user I want to add a point system
 - As a user I want to be able to let the system determine if I got the correct answer
 - As a user I want to be able to insert arbitrary amount of questions
@@ -39,4 +39,24 @@ learning process.
 a question correctly or falsely
 - You can save the state of my application by clicking on the save button in MainGui
 - You can reload the state of my application by clicking on the reload button in MainGui
+
+## Phase 4: Task 2:
+- Delete question logs "Question is removed".
+- Insert Question logs "Question is added".
+- Start Quiz Logs "Quiz is running".
+- When points are shown "Points are added or assigned points are shown".
+- When questions has been shown "Points are added or assigned points are shown".
+- When answers has been shown "Points are added or assigned points are shown".
+- Due to the design choice problems, the log events do show duplicates as I had to implement the for loop in the ui 
+package. Instead of laying out the logic in the model, I have used getters in the model to implement the behaviour for 
+the project which can be improved in the future.
+
+## Phase 4: Task 3:
+- Refactoring:
+- i. As mentioned in task2, the logic could be improved if the methods could be implemented in model instead 
+of stacking in ui. 
+- ii. There is high coupling as shown in UML, such that listofquestion is field of app, and app is a
+field of the MainMenuGui. The APP class can be simplified if more time is given.
+- iii. Furthuremore, the gui could be simplified such that similar behaviour buttons such as showing questions, answers
+and assigned points can be extending to one abstract class or interface for the sake of clarity.
 

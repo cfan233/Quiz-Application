@@ -26,11 +26,14 @@ public class ListOfQuestions implements Writable {
     }
 
     public ArrayList<Question> getListOfQuestions() {
-        EventLog.getInstance().logEvent(new Event("Show questions in question bank"
-                + " Show answer in question bank" + " Points are added or assigned points are shown" + " Start QUiz"));
-
         return this.listOfQuestions;
     }
+
+    public ArrayList<Question> getListOfQuestions1() {
+        EventLog.getInstance().logEvent(new Event("Quiz is running"));
+        return this.listOfQuestions;
+    }
+
 
     //REQIURES: question
     //MODIFIES: this
@@ -70,8 +73,6 @@ public class ListOfQuestions implements Writable {
             }
 
         }
-        EventLog.getInstance().logEvent(new Event("Checks if the input string question is already in "
-                + " question bank"));
         return false;
     }
 

@@ -24,22 +24,33 @@ public class Question implements Writable {
     }
 
     public String getCorrectanswer() {
-        EventLog.getInstance().logEvent(new Event("User input answer is checked against the correct answer "
-                + "or answer is being showed in pop up window"));
+        return this.correctanswer;
+    }
+
+    public String getCorrectanswer1() {
+        EventLog.getInstance().logEvent(new Event("Answers in the bank are shown"));
         return this.correctanswer;
     }
 
 
     public String getQuestion() {
-        EventLog.getInstance().logEvent(new Event("Question is removed or "
-                + "question is showing the question bank"));
+        return this.question;
+    }
+
+    public String getQuestion1() {
+        EventLog.getInstance().logEvent(new Event("Questions in the bank are shown"));
         return this.question;
     }
 
     public int getAssignedpoints() {
-        EventLog.getInstance().logEvent(new Event("Points are added or assigned points are shown"));
         return this.assignedpoints;
     }
+
+    public int getAssignedpoints1() {
+        EventLog.getInstance().logEvent(new Event("Assigned points are shown"));
+        return this.assignedpoints;
+    }
+
 
     @Override
     public JSONObject toJson() {
