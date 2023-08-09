@@ -26,6 +26,9 @@ public class ListOfQuestions implements Writable {
     }
 
     public ArrayList<Question> getListOfQuestions() {
+        EventLog.getInstance().logEvent(new Event("Show questions in question bank"
+                + " Show answer in question bank" + " Points are added or assigned points are shown" + " Start QUiz"));
+
         return this.listOfQuestions;
     }
 
@@ -34,6 +37,7 @@ public class ListOfQuestions implements Writable {
     //EFFECTS: add the question to the listofQuestions
     public void addQuestion(Question question) {
         this.listOfQuestions.add(question);
+        EventLog.getInstance().logEvent(new Event("Question is added"));
     }
     //REQIURES: question
     //MODIFIES: this
@@ -41,6 +45,7 @@ public class ListOfQuestions implements Writable {
 
     public void removeQuestioncons(Question question) {
         this.listOfQuestions.remove(question);
+        EventLog.getInstance().logEvent(new Event("Question is removed"));
     }
 
     //REQIURES: The String version of the quesiton
@@ -52,6 +57,7 @@ public class ListOfQuestions implements Writable {
                 this.listOfQuestions.remove(q);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Question is removed"));
     }
 
 
@@ -64,6 +70,8 @@ public class ListOfQuestions implements Writable {
             }
 
         }
+        EventLog.getInstance().logEvent(new Event("Checks if the input string question is already in "
+                + " question bank"));
         return false;
     }
 

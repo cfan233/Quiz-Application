@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Question;
 import ui.imagerelated.Questionhasbeenaddedimage;
 import ui.imagerelated.SuccessfulPage;
@@ -11,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 // Citation: TrafficLight Lecture Lab
@@ -204,7 +207,6 @@ public class MainMenuGUI extends JFrame {
 
         showAnswerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 qbankashower();
             }
         });
@@ -306,6 +308,12 @@ public class MainMenuGUI extends JFrame {
 
         quitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                EventLog eventLog = EventLog.getInstance();
+                Iterator<model.Event> iterator = eventLog.iterator();
+                while (iterator.hasNext()) {
+                    Event event = iterator.next();
+                    System.out.println(event.getDescription() + event.getDate());
+                }
                 System.exit(0);
             }
         });
