@@ -9,6 +9,9 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Citation: AlarmSystem
+//https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
+
 /**
  * Unit tests for the Event class
  */
@@ -59,6 +62,10 @@ public class EventTest {
         assertEquals(a,e);
         assertFalse(a.equals(e));
         assertFalse(a.equals(c));
+
+        Event l = new Event("x");
+        assertFalse(l.equals(e));
+        assertEquals(l,e);
     }
 
     @Test
