@@ -25,9 +25,10 @@ public class EventTest {
     @BeforeEach
     public void runBefore() {
         e = new Event("x");  // (1)
+        a = new Event("x");
         d = Calendar.getInstance().getTime();   // (2)
         c = new Event("Sensor open at doo");
-        a = new Event("x");
+
     }
 
     @Test
@@ -43,6 +44,7 @@ public class EventTest {
     @Test
     public void testequalsnotsamesubject() {
         assertFalse(e.equals(d));
+        assertFalse(c.equals("123"));
     }
 
     @Test
@@ -58,7 +60,7 @@ public class EventTest {
 
     @Test
     public void testequalscorrect() {
-        assertFalse(a.equals(e));
+        assertTrue(a.equals(e));
         assertFalse(a.equals(c));
     }
 
