@@ -17,6 +17,7 @@ public class EventTest {
     private Event a;
     private Event c;
     private Date d;
+    private Event z;
 
     //NOTE: these tests might fail if time at which line (2) below is executed
     //is different from time that line (1) is executed.  Lines (1) and (2) must
@@ -28,37 +29,33 @@ public class EventTest {
         a = new Event("x");
         d = Calendar.getInstance().getTime();   // (2)
         c = new Event("Sensor open at doo");
+        z = new Event("x");
 
+    }
+
+    @Test
+    public void testequalscorrect() {
+
+        assertEquals(a,e);
+        assertFalse(a.equals(e));
+
+        assertEquals(z,e);
+        assertFalse(z.equals(e));
+        assertFalse(a.equals(c));
+        assertFalse(e.equals(null));
+        assertFalse(e.equals(c));
+        assertFalse(e.equals(d));
+        assertFalse(c.equals("123"));
+        assertFalse(z.equals("12323"));
+
+        Event l = new Event("x");
+        assertFalse(l.equals(e));
     }
 
     @Test
     public void testEvent() {
         assertEquals("x", e.getDescription());
         assertEquals(d, e.getDate());
-    }
-
-    @Test
-    public void testequalsnull() {
-        assertFalse(e.equals(null));
-    }
-    @Test
-    public void testequalsnotsamesubject() {
-        assertFalse(e.equals(d));
-        assertFalse(c.equals("123"));
-    }
-
-    @Test
-    public void testequalsnotsame() {
-        assertFalse(e.equals(c));
-    }
-
-
-
-    @Test
-    public void testequalscorrect() {
-        assertEquals(a,e);
-        assertFalse(a.equals(e));
-        assertFalse(a.equals(c));
     }
 
     @Test
