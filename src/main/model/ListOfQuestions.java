@@ -54,8 +54,8 @@ public class ListOfQuestions implements Writable {
     public void removeQuestionstring(String question) {
         for (Question q : this.listOfQuestions) {
             if (q.getQuestion().equals(question)) {
-                this.listOfQuestions.remove(q);
                 EventLog.getInstance().logEvent(new Event("Question is removed "));
+                this.listOfQuestions.remove(q);
             }
         }
 
