@@ -36,7 +36,7 @@ public class Question implements Writable {
         return this.assignedpoints;
     }
 
-
+    //EFFECTS: return true if the two statements are the same otherwise false
     public boolean checkcorrect(String inputanswer, String correctanswer) {
         EventLog.getInstance().logEvent(new Event("New question is shown in Start Quiz "));
         if (inputanswer.equals(correctanswer)) {

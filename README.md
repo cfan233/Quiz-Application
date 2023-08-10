@@ -44,19 +44,16 @@ a question correctly or falsely
 - Delete question logs "Question is removed".
 - Insert Question logs "Question is added".
 - Start Quiz Logs "Quiz is running".
-- When points are shown "Points are added or assigned points are shown".
-- When questions has been shown "Points are added or assigned points are shown".
-- When answers has been shown "Points are added or assigned points are shown".
-- Due to the design choice problems, the log events do show duplicates as I had to implement the for loop in the ui 
-package. Instead of laying out the logic in the model, I have used getters in the model to implement the behaviour for 
-the project which can be improved in the future.
+- When user gets one question correct system logs "Total points for the quiz has increased, and answer input is correct"
+- When user gets one question correct system logs ""Answer input is wrong ""
+- 
 
 ## Phase 4: Task 3:
 - Refactoring:
-- i. As mentioned in task2, the logic could be improved if the methods could be implemented in model instead 
-of stacking in ui. 
-- ii. There is high coupling as shown in UML, such that listofquestion is field of app, and app is a
-field of the MainMenuGui. The APP class can be simplified if more time is given.
-- iii. Furthuremore, the gui could be simplified such that similar behaviour buttons such as showing questions, answers
-and assigned points can be extending to one abstract class or interface for the sake of clarity.
+- i. There is high coupling as shown in UML, such that listofquestion is field of app, and app is a
+field of the MainMenuGui. As of right now, the GUI is referring to app for the question bank, this can be simplified to 
+simply having a field of listofquestion for sake of run time. The APP class functionality can be stripped down or 
+eliminated if more time is given.
+- ii. Furthermore, the gui could be simplified such that similar behaviour buttons such as showing questions, answers
+and assigned points can be extending to one abstract class or interface for the sake of clarity. 
 

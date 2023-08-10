@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 // Citation: Teller APP, WorkRoomAPP
 //https://github.students.cs.ubc.ca/CPSC210/TellerApp
@@ -51,12 +52,16 @@ public class ListOfQuestions implements Writable {
     //MODIFIES: this
     //EFFECTS: remove the question to the listofQuestions
     public void removeQuestionstring(String question) {
-        for (Question q : this.listOfQuestions) {
-            if (q.getQuestion().equals(question)) {
-                this.listOfQuestions.remove(q);
-            }
-        }
         EventLog.getInstance().logEvent(new Event("Question is removed "));
+        try {
+            for (Question q : this.listOfQuestions) {
+                if (q.getQuestion().equals(question)) {
+                    this.listOfQuestions.remove(q);
+                }
+            }
+        } catch (ConcurrentModificationException e) {
+            //caught
+        }
     }
 
 
