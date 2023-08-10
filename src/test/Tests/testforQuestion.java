@@ -4,7 +4,7 @@ import model.Question;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class testforQuestion {
 
@@ -34,31 +34,10 @@ public class testforQuestion {
     }
 
     @Test
-    public void testgetAssignedpoints(){
-        assertEquals(1, q1.getAssignedpoints1());
-        assertEquals(2, q2.getAssignedpoints1());
-        assertEquals(0, q3.getAssignedpoints1());
-    }
-
-    @Test
-    public void testgetCorrectanswer1(){
-        assertEquals("Ottawa", q1.getCorrectanswer1());
-        assertEquals("Vancouver", q2.getCorrectanswer1());
-        assertEquals("", q3.getCorrectanswer1());
-    }
-
-    @Test
-    public void testgetQuestion1(){
-        assertEquals("What is the capital of Canada?", q1.getQuestion1());
-        assertEquals("Which city is UBC at", q2.getQuestion1());
-        assertEquals("", q3.getQuestion1());
-    }
-
-    @Test
-    public void testgetAssignedpoints1(){
-        assertEquals(1, q1.getAssignedpoints1());
-        assertEquals(2, q2.getAssignedpoints1());
-        assertEquals(0, q3.getAssignedpoints1());
+    public void testcheckCorrect(){
+        assertTrue(q1.checkcorrect("Ottawa", "Ottawa"));
+        assertFalse(q1.checkcorrect("Ottaw", "Ottawa"));
+        assertFalse(q1.checkcorrect("oTTAWA", "Ottawa"));
     }
 }
 

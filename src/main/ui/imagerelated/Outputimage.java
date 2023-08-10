@@ -6,6 +6,8 @@ public class Outputimage extends JFrame {
     private JFrame frame = new JFrame();
     ImageIcon pic;
 
+    // MODIFIES: this
+    // EFFECTS: adds the image with the given string location in file
     public Outputimage() {
     }
 

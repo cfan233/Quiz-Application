@@ -190,7 +190,7 @@ public class MainMenuGUI extends JFrame {
 
         for (Question q : app.questionBank.getListOfQuestions()) {
 
-            String qinstring = q.getQuestion1();
+            String qinstring = q.getQuestion();
             qsinstring.add("Question" + String.valueOf(numquestion) + " : " + qinstring);
             numquestion++;
         }
@@ -227,7 +227,7 @@ public class MainMenuGUI extends JFrame {
 
         for (Question q : app.questionBank.getListOfQuestions()) {
 
-            String qinstring = q.getCorrectanswer1();
+            String qinstring = q.getCorrectanswer();
             qsinstring.add("Answer" + String.valueOf(numquestion) + " : " + qinstring);
             numquestion++;
         }
@@ -265,7 +265,7 @@ public class MainMenuGUI extends JFrame {
 
         for (Question q : app.questionBank.getListOfQuestions()) {
 
-            int qinstring = q.getAssignedpoints1();
+            int qinstring = q.getAssignedpoints();
             qsinstring.add("Question" + String.valueOf(numquestion) + " : " + qinstring + " points");
             numquestion++;
         }
@@ -439,7 +439,7 @@ public class MainMenuGUI extends JFrame {
     //MODIFIES: this
     //EFFECTS: insert textfields for answers for the questions into startquiz interface
     public void initializetextbox() {
-        for (Question q : app.questionBank.getListOfQuestions1()) {
+        for (Question q : app.questionBank.getListOfQuestions()) {
             JTextField textField = new JTextField(10);
             useranswer.add(textField);
         }
@@ -448,7 +448,7 @@ public class MainMenuGUI extends JFrame {
     //MODIFIES: this
     //EFFECTS: insert lables to start quiz interface and puts the question in the question bank in the label
     public void showq(int indexnum) {
-        String question = app.getQuestionBank().getListOfQuestions1().get(indexnum).getQuestion();
+        String question = app.getQuestionBank().getListOfQuestions().get(indexnum).getQuestion();
         questionlabel.setText("Question: " + question);
         useranswer.get(0).setText("");
     }
@@ -471,18 +471,19 @@ public class MainMenuGUI extends JFrame {
     public void answerchecker() {
 
         String inputanswer = useranswer.get(0).getText();
-        String correctAnswer = app.getQuestionBank().getListOfQuestions1().get(qnum).getCorrectanswer();
-        if (inputanswer.equals(correctAnswer)) {
+        String correctAnswer = app.getQuestionBank().getListOfQuestions().get(qnum).getCorrectanswer();
+        Question givenq = app.getQuestionBank().getListOfQuestions().get(qnum);
+        if (givenq.checkcorrect(inputanswer, correctAnswer)) {
             new SuccessfulPage();
-            points += app.getQuestionBank().getListOfQuestions1().get(qnum).getAssignedpoints();
+            points += app.getQuestionBank().getListOfQuestions().get(qnum).getAssignedpoints();
             pointsLabel.setText("Total Points: " + points);
-        } else if (!inputanswer.equals(correctAnswer)) {
+        } else {
             new Unsuccessfulpage();
             pointsLabel.setText("Total Points: " + points);
         }
         qnum += 1;
 
-        if (qnum < app.getQuestionBank().getListOfQuestions1().size()) {
+        if (qnum < app.getQuestionBank().getListOfQuestions().size()) {
             showq(qnum);
         } else {
             statusLabelsq.setText("You have finished the quiz, your total score is " + this.points);

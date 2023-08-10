@@ -29,10 +29,6 @@ public class ListOfQuestions implements Writable {
         return this.listOfQuestions;
     }
 
-    public ArrayList<Question> getListOfQuestions1() {
-        EventLog.getInstance().logEvent(new Event("Quiz is running"));
-        return this.listOfQuestions;
-    }
 
 
     //REQIURES: question
@@ -40,7 +36,7 @@ public class ListOfQuestions implements Writable {
     //EFFECTS: add the question to the listofQuestions
     public void addQuestion(Question question) {
         this.listOfQuestions.add(question);
-        EventLog.getInstance().logEvent(new Event("Question is added"));
+        EventLog.getInstance().logEvent(new Event("Question is added "));
     }
     //REQIURES: question
     //MODIFIES: this
@@ -48,7 +44,7 @@ public class ListOfQuestions implements Writable {
 
     public void removeQuestioncons(Question question) {
         this.listOfQuestions.remove(question);
-        EventLog.getInstance().logEvent(new Event("Question is removed"));
+        EventLog.getInstance().logEvent(new Event("Question is removed "));
     }
 
     //REQIURES: The String version of the quesiton
@@ -60,7 +56,7 @@ public class ListOfQuestions implements Writable {
                 this.listOfQuestions.remove(q);
             }
         }
-        EventLog.getInstance().logEvent(new Event("Question is removed"));
+        EventLog.getInstance().logEvent(new Event("Question is removed "));
     }
 
 

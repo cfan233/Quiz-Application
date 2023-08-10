@@ -27,18 +27,8 @@ public class Question implements Writable {
         return this.correctanswer;
     }
 
-    public String getCorrectanswer1() {
-        EventLog.getInstance().logEvent(new Event("Answers in the bank are shown"));
-        return this.correctanswer;
-    }
-
 
     public String getQuestion() {
-        return this.question;
-    }
-
-    public String getQuestion1() {
-        EventLog.getInstance().logEvent(new Event("Questions in the bank are shown"));
         return this.question;
     }
 
@@ -46,9 +36,17 @@ public class Question implements Writable {
         return this.assignedpoints;
     }
 
-    public int getAssignedpoints1() {
-        EventLog.getInstance().logEvent(new Event("Assigned points are shown"));
-        return this.assignedpoints;
+
+    public boolean checkcorrect(String inputanswer, String correctanswer) {
+        EventLog.getInstance().logEvent(new Event("New question is shown in Start Quiz "));
+        if (inputanswer.equals(correctanswer)) {
+            EventLog.getInstance().logEvent(new Event("Total points for the quiz has increased, "
+                    + "and answer input is correct "));
+            return true;
+        } else {
+            EventLog.getInstance().logEvent(new Event("Answer input is wrong "));
+            return false;
+        }
     }
 
 
