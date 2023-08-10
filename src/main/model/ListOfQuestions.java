@@ -52,16 +52,13 @@ public class ListOfQuestions implements Writable {
     //MODIFIES: this
     //EFFECTS: remove the question to the listofQuestions
     public void removeQuestionstring(String question) {
-        EventLog.getInstance().logEvent(new Event("Question is removed "));
-        try {
-            for (Question q : this.listOfQuestions) {
-                if (q.getQuestion().equals(question)) {
-                    this.listOfQuestions.remove(q);
-                }
+        for (Question q : this.listOfQuestions) {
+            if (q.getQuestion().equals(question)) {
+                this.listOfQuestions.remove(q);
+                EventLog.getInstance().logEvent(new Event("Question is removed "));
             }
-        } catch (ConcurrentModificationException e) {
-            //caught
         }
+
     }
 
 
