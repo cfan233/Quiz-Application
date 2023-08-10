@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -142,8 +143,12 @@ public class MainMenuGUI extends JFrame {
     //MODIFIES: this, app
     //EFFECTS: removes the question from the app question bank with the string from the text field
     public void deletefunciton() {
-        String deleteqinpuutstring = deleteqinput.getText();
-        app.questionBank.removeQuestionstring(deleteqinpuutstring);
+        try {
+            String deleteqinpuutstring = deleteqinput.getText();
+            app.questionBank.removeQuestionstring(deleteqinpuutstring);
+        } catch (ConcurrentModificationException e) {
+            //caught
+        }
     }
 
     //MODIFIES: this

@@ -85,21 +85,11 @@ public class testforListofQuestions {
         loq.addQuestion(q1);
         loq.addQuestion(q2);
 
-
-        try {loq.removeQuestionstring("What is the capital of Canada?");
-            assertEquals(1, loq.getListOfQuestions().size());
-            assertEquals(q2, loq.getListOfQuestions().get(0));
-        } catch (ConcurrentModificationException e) {
-            fail();
-        }
-
-
-        try {loq.removeQuestionstring("Who is the prime minister of Canada?");
-            assertEquals(1, loq.getListOfQuestions().size());
-            assertEquals(q2, loq.getListOfQuestions().get(0));
-        } catch (ConcurrentModificationException e) {
-            fail();
-        }
+        loq.removeQuestionstring("What is the capital of Canada?");
+        assertEquals(1, loq.getListOfQuestions().size());
+        assertEquals(q2, loq.getListOfQuestions().get(0)); loq.removeQuestionstring("Who is the prime minister of Canada?");
+        assertEquals(1, loq.getListOfQuestions().size());
+        assertEquals(q2, loq.getListOfQuestions().get(0));
 
 
 
