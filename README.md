@@ -43,10 +43,9 @@ a question correctly or falsely
 ## Phase 4: Task 2:
 - Delete question logs "Question is removed".
 - Insert Question logs "Question is added".
-- Start Quiz Logs "Quiz is running".
+- Start Quiz when new question is shown on interface Logs "New question is shown in Start Quiz".
 - When user gets one question correct system logs "Total points for the quiz has increased, and answer input is correct"
-- When user gets one question correct system logs ""Answer input is wrong ""
-- 
+- When user gets one question correct system logs "Answer input is wrong "
 
 ## Phase 4: Task 3:
 - Refactoring:
