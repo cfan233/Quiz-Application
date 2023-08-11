@@ -37,6 +37,7 @@ public class Question implements Writable {
     }
 
     //EFFECTS: return true if the two statements are the same otherwise false
+    //Logs the event that a new question is shown, answer is correct or not and total points has increased
     public boolean checkcorrect(String inputanswer, String correctanswer) {
         EventLog.getInstance().logEvent(new Event("New question is shown in Start Quiz "));
         if (inputanswer.equals(correctanswer)) {

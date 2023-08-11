@@ -308,6 +308,7 @@ public class MainMenuGUI extends JFrame {
 
     //MODIFIES: this
     //EFFECTS: insert a new button to the ui, and quits the application
+    //Prints all loged events in console
     public void quit() {
         JButton quitButton = new JButton("Quit");
 
