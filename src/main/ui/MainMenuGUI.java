@@ -326,6 +326,7 @@ public class MainMenuGUI extends JFrame {
         buttonPanel.add(quitButton);
     }
 
+
     //MODIFIES: this
     //EFFECTS: insert a new button to the ui in the form of pop up window, and allows the function of
     //         insert question to be shown
